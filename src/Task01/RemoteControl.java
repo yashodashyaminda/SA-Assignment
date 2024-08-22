@@ -2,8 +2,8 @@ package Task01;
 
 public class RemoteControl {
 
-    private Command[] onCommands;
-    private Command[] offCommands;
+    private final Command[] onCommands;
+    private final Command[] offCommands;
     private Command undoCommand;
 
     public RemoteControl() {
@@ -36,4 +36,7 @@ public class RemoteControl {
         undoCommand.undo();
     }
 
+    public void dimButtonWasPushed(int i) {
+
+    }
 }
