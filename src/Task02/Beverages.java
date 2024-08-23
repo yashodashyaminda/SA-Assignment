@@ -22,4 +22,7 @@ public abstract class Beverages {
             addExtras();
         }
     }
+    protected abstract void  brew();
+    protected abstract void  addCondiments();
+    protected abstract void addExtras();
 }
