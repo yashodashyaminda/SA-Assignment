@@ -1,23 +1,22 @@
 package Task01;
 
-class KitchenRoomLight implements Light{
-    private int brightness = 0;
-    int level ;
+public class KitchenRoomLight implements Light{
+    private int brightness ;
 
 
     public void on(){
         brightness = 100;
-        System.out.println("Kichen light is ON at full brightness.");
+        System.out.println("Kitchen light is ON at full brightness.");
     }
 
     public void off(){
         brightness = 0;
-        System.out.println("Kichen light is OFF.");
+        System.out.println("Kitchen light is OFF.");
     }
 
-    public void dim(int previousLevel) {
+    public void dim(int level) {
         brightness = level;
-        System.out.println("Kichen light dimmed to" + level + "% brightness.");
+        System.out.println("Kitchen light dimmed to "+ level +" %.");
     }
 
     public int getBrightness() {

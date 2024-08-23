@@ -2,15 +2,16 @@ package Task01;
 
 public class RemoteControl {
 
-    private final Command[] onCommands;
-    private final Command[] offCommands;
+    private Command[] onCommands;
+    private Command[] offCommands;
     private Command undoCommand;
 
-    public RemoteControl() {
-        onCommands = new Command[7];
-        offCommands = new Command[7];
+    public RemoteControl(int slots) {
+        onCommands = new Command[slots];
+        offCommands = new Command[slots];
+
         Command noCommand = new NoCommand();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0;i< slots; i++) {
             onCommands[i] = noCommand;
             offCommands[i] = noCommand;
         }
@@ -22,21 +23,18 @@ public class RemoteControl {
         offCommands[slot] = offCommand;
     }
 
-    public void onButtonWasPushed(int slot) {
+    public void onButtonWasPressed(int slot) {
         onCommands[slot].execute();
         undoCommand = onCommands[slot];
     }
 
-    public void offButtonWasPushed(int slot) {
+    public void offButtonWasPressed(int slot) {
         offCommands[slot].execute();
         undoCommand = offCommands[slot];
     }
 
-    public void undoButtonWasPushed() {
+    public void undoButtonWasPressed() {
         undoCommand.undo();
     }
 
-    public void dimButtonWasPushed(int i) {
-
-    }
 }

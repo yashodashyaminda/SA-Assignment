@@ -1,13 +1,7 @@
 package Task01;
 
 public class LivingRoomLight implements Light{
-    private int brightness = 0;
-    int level ;
-
-    @Override
-    public void dim(int level) {
-
-    }
+    private int brightness ;
 
     public void on(){
         brightness = 100;
@@ -19,9 +13,9 @@ public class LivingRoomLight implements Light{
         System.out.println("Living room light is OFF.");
     }
 
-    public void dim() {
+    public void dim(int level){
         brightness = level;
-        System.out.println("Living room light dimmed to" + level + "% brightness.");
+        System.out.println("Living Room light dimmed to "+brightness+"%.");
     }
 
     public int getBrightness() {

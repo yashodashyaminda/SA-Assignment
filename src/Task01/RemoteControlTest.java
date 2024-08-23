@@ -2,41 +2,39 @@ package Task01;
 
 public class RemoteControlTest {
     public static void main(String[] args) {
-        RemoteControl remote = new RemoteControl();
+        RemoteControl remoteControl = new RemoteControl(2);
 
-        KitchenRoomLight kitchenLight = new KitchenRoomLight();
-        LivingRoomLight livingRoomLight = new LivingRoomLight();
+        Light kitchenLight = new KitchenRoomLight();
+        Light livingRoomLight = new LivingRoomLight();
+
 
         LightOnCommand kitchenLightOn = new LightOnCommand(kitchenLight);
         LightOffCommand kitchenLightOff = new LightOffCommand(kitchenLight);
-        LightDimCommand kitchenLightDim = new LightDimCommand(kitchenLight, 50) {
-            @Override
-            void getBrightness() {
+        LightDimCommand kitchenLightDim = new LightDimCommand(kitchenLight, 50);
 
-            }
-        };
 
-        LightOnCommand livingRoomLightOn = new LightOnCommand((Light) livingRoomLight);
-        LightOffCommand livingRoomLightOff = new LightOffCommand((Light) livingRoomLight);
-        LightDimCommand livingRoomLightDim = new LightDimCommand((Light) livingRoomLight, 70) {
-            @Override
-            void getBrightness() {
+        LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+        LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+        LightDimCommand livingRoomLightDim = new LightDimCommand(livingRoomLight, 30);
 
-            }
-        };
 
-        remote.setCommand(0, kitchenLightOn, kitchenLightOff);
-        remote.setCommand(1, livingRoomLightOn, livingRoomLightOff);
+        remoteControl.setCommand(0, kitchenLightOn, kitchenLightOff);
+        remoteControl.setCommand(1, livingRoomLightOn, livingRoomLightOff);
 
-        remote.onButtonWasPushed(0);
-        remote.dimButtonWasPushed(0);
-        remote.offButtonWasPushed(0);
-        remote.undoButtonWasPushed();
 
-        remote.onButtonWasPushed(1);
-        remote.dimButtonWasPushed(1);
-        remote.offButtonWasPushed(1);
-        remote.undoButtonWasPushed();
+        remoteControl.onButtonWasPressed(0);
+        remoteControl.offButtonWasPressed(0);
+        remoteControl.undoButtonWasPressed();
+
+        remoteControl.onButtonWasPressed(1);
+        remoteControl.offButtonWasPressed(1);
+        remoteControl.undoButtonWasPressed();
+
+
+        kitchenLightDim.execute();
+        kitchenLightDim.undo();
+
+        livingRoomLightDim.execute();
+        livingRoomLightDim.undo();
     }
 }
-

@@ -1,10 +1,11 @@
 package Task01;
 
 public interface Light {
-    void on();
+    public void on();
 
-    void off();
-    void dim(int level);
+    public void off();
+
+    public void dim(int level);
 
     int getBrightness();
 }
